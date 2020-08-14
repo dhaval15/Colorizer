@@ -169,7 +169,7 @@ function! s:HexCode(str, lineno) "{{{2
   endif
   let ret = []
   let place = 0
-  let colorpat = '#[0-9A-Fa-f]\{3\}\>\|#[0-9A-Fa-f]\{6\}\>\|#[0-9A-Fa-f]\{8\}\>\|#[0-9A-Fa-f]\{4\}\>'
+  let colorpat = '#[0-9A-Fa-f]\{3\}\>\|#[0-9A-Fa-f]\{6\}\>\|#[0-9A-Fa-f]\{8\}\>\|0x[0-9A-Fa-f]\{8\}\>\|#[0-9A-Fa-f]\{4\}\>'
   while 1
     let foundcolor = matchstr(a:str, colorpat, place)
     if foundcolor == ''
@@ -194,6 +194,9 @@ function! s:HexCode(str, lineno) "{{{2
       if len(foundcolor) == 9
         let alpha      = foundcolor[1:2]
         let foundcolor = '#'.foundcolor[3:8]
+      elseif len(foundcolor) == 10
+        let alpha      = foundcolor[2:3]
+        let foundcolor = '#'.foundcolor[4:9]
       else
         let alpha = 'ff'
       endif
