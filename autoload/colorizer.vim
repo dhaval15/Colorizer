@@ -195,8 +195,8 @@ function! s:HexCode(str, lineno) "{{{2
         let alpha      = foundcolor[1:2]
         let foundcolor = '#'.foundcolor[3:8]
       elseif len(foundcolor) == 10
-        let alpha      = foundcolor[2:4]
-        let foundcolor = '#'.foundcolor[4:10]
+        let alpha      = foundcolor[2:3]
+        let foundcolor = '#'.foundcolor[4:9]
       else
         let alpha = 'ff'
       endif
@@ -223,6 +223,9 @@ function! s:HexCode(str, lineno) "{{{2
       if len(foundcolor) == 9
         let alpha      = foundcolor[7:8]
         let foundcolor = foundcolor[0:6]
+      elseif len(foundcolor) == 10
+        let alpha      = foundcolor[2:3]
+        let foundcolor = foundcolor[4:9]
       else
         let alpha = 'ff'
       endif
