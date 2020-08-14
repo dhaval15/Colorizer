@@ -160,7 +160,7 @@ endfunction
 
 "ColorFinders {{{1
 function! s:HexCode(str, lineno) "{{{2
-  " finds RGB: #00f #0000ff and RGBA: #00f8 #0000ff88 (or ARGB: #800f #880000ff)
+  " finds RGB: #00f #0000ff and RGBA: #00f8 #0000ff88 (or ARGB: #800f #880000ff) 0xFFFFFFFF 
   if has("gui_running")
     let rgb_bg = s:RgbBgColor()
   else
@@ -195,8 +195,8 @@ function! s:HexCode(str, lineno) "{{{2
         let alpha      = foundcolor[1:2]
         let foundcolor = '#'.foundcolor[3:8]
       elseif len(foundcolor) == 10
-        let alpha      = foundcolor[2:3]
-        let foundcolor = '#'.foundcolor[4:9]
+        let alpha      = foundcolor[2:4]
+        let foundcolor = '#'.foundcolor[4:10]
       else
         let alpha = 'ff'
       endif
